@@ -7,10 +7,21 @@ class RecipeForm(forms.ModelForm):
         queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False,
+        label='Категория'
     )
     class Meta:
         model = Recipe
         fields = ['title', 'description', 'servings', 'ingredients', 'steps', 'cooking_time', 'image', 'category']
+        labels = {
+            'title': 'Название',
+            'description': 'Краткое описание',
+            'servings': 'Количество порций',
+            'ingredients': 'Ингридиенты',
+            'steps': 'Шаги приготовления',
+            'cooking_time': 'Время приготовления (мин)',
+            'image': 'Изображение',
+            'category': 'Категория'
+        }
 
 
 class RegisterForm(forms.ModelForm):
@@ -20,6 +31,11 @@ class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
+        labels = {
+            'username': 'Имя пользователя',
+            'email': 'Электронная почта',
+            'password': 'Пароль'
+        }
 
     def clean(self):
         cleaned_data = super().clean()
