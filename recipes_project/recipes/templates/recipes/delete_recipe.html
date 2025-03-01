@@ -1,11 +1,13 @@
 {% extends 'recipes/base.html' %}
 
 {% block content %}
-<h2>Удаление рецепта</h2>
-<p>Вы уверены, что хотите удалить "{{ recipe.title }}"?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Удалить</button>
-</form>
-<a href="{% url 'recipe_details' recipe.id %}">Отмена</a>
+<div class="form-container">
+    <h2>Удаление рецепта</h2>
+    <p>Вы уверены, что хотите удалить "{{ recipe.title }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a href="{% url 'recipe_details' recipe.id %}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
 {% endblock %}

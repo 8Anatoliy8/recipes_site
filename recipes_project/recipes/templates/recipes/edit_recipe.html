@@ -1,13 +1,15 @@
 {% extends 'recipes/base.html' %}
 
 {% block content %}
-<h2>Редактирование рецепта: {{ recipe.title }}</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <button type="submit">Сохранить изменения</button>
-</form>
-<a href="{% url 'recipe_details' recipe.id %}">Отмена</a>
+<div class="form-container">
+    <h2>Редактирование рецепта: {{ recipe.title }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+        <a href="{% url 'recipe_details' recipe.id %}" class="btn btn-secondary">Отмена</a>
+    </form>
+</div>
 {% endblock %}
